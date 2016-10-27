@@ -1,3 +1,4 @@
+# Original works by stignz https://lime-technology.com/forum/index.php?topic=46663.0
 # Installation
 # make supporting directory structure on flash drive
 	mkdir -p /boot/rclone
@@ -6,17 +7,17 @@
 	mkdir -p /boot/rclone/logs
 
 #download dependencies to /boot/rclone/install
-	wget http://mirrors.slackware.com/slackware/slackware-13.1/slackware/ap/man-1.6f-i486-2.txz -O //boot/rclone/install/man-1.6f-i486-2.txz
-	wget http://mirrors.slackware.com/slackware/slackware-13.1/slackware/a/infozip-6.0-i486-1.txz -O //boot/rclone/install/infozip-6.0-i486-1.txz
+	wget http://slackware.cs.utah.edu/pub/slackware/slackware64-14.2/slackware64/ap/man-1.6g-x86_64-3.txz -O //boot/rclone/install/man-1.6g-x86_64-3.txz
+	wget http://slackware.cs.utah.edu/pub/slackware/slackware64-14.2/slackware64/a/infozip-6.0-x86_64-3.txz -O //boot/rclone/install/infozip-6.0-x86_64-3.txz
 	curl -o /boot/rclone/install/ca-certificates.crt https://raw.githubusercontent.com/bagder/ca-bundle/master/ca-bundle.crt
 
 #Install dependencies (skip infozip if you already have it installed)
-	installpkg /boot/rclone/install/man-1.6f-i486-2.txz
-	installpkg /boot/rclone/install/infozip-6.0-i486-1.txz
+	installpkg /boot/rclone/install/man-1.6g-x86_64-3.txz
+	installpkg /boot/rclone/install/infozip-6.0-x86_64-3.txz
 		
 #Download rclone and unzip
-	wget http://downloads.rclone.org/rclone-current-linux-386.zip -O //boot/rclone/install/rclone-current-linux-386.zip
-	unzip /boot/rclone/install/rclone-current-linux-386.zip
+	wget http://downloads.rclone.org/rclone-current-linux-amd64.zip -O //boot/rclone/install/rclone-current-linux-amd64.zip
+	unzip /boot/rclone/install/rclone-current-linux-amd64.zip -d /boot/rclone/install/
 	
 #copy binary file
 	cp /boot/rclone/install/rclone-v*/rclone /usr/sbin/
@@ -34,22 +35,22 @@
   sleep 5m &&
 
 #Install dependancies
-	installpkg /boot/rclone/install/man-1.6f-i486-2.txz
-	installpkg /boot/rclone/install/infozip-6.0-i486-1.txz
+	installpkg /boot/rclone/install/man-1.6g-x86_64-3.txz
+	installpkg /boot/rclone/install/infozip-6.0-x86_64-3.txz
 
 #Download fresh version of rclone
-wget http://downloads.rclone.org/rclone-current-linux-386.zip -O //boot/rclone/rclone-current-linux-386.zip
+	wget http://downloads.rclone.org/rclone-current-linux-amd64.zip -O //boot/rclone/install/rclone-current-linux-amd64.zip
 
 #check if file downloaded
-if [ -f "/boot/rclone/rclone-current-linux-386.zip" ]
+if [ -f "/boot/rclone/rclone-current-linux-amd64.zip" ]
 then
     #remove existing rclone zip
-	rm /boot/rclone/install/rclone-current-linux-386.zip
+	rm /boot/rclone/install/rclone-current-linux-amd64.zip
 	rm -rf /boot/rclone/install/rclone-v*
 	#move new rclone zip to install directory
-	mv /boot/rclone/rclone-current-linux-386.zip /boot/rclone/install
+	mv /boot/rclone/rclone-current-linux-amd64.zip /boot/rclone/install
 	#unzip the rclone download into the install directory
-	unzip /boot/rclone/install/rclone-current-linux-386.zip -d /boot/rclone/install/
+	unzip /boot/rclone/install/rclone-current-linux-amd64.zip -d /boot/rclone/install/
 fi
 
 #Install rclone
