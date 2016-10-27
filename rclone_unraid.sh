@@ -30,9 +30,8 @@
 #copy ca-certificates
 	mkdir -p /etc/ssl/certs/
 	cp /boot/rclone/install/ca-certificates.crt /etc/ssl/certs/
-  
-  
-  sleep 5m &&
+
+sleep 5m &&
 
 #Install dependancies
 	installpkg /boot/rclone/install/man-1.6g-x86_64-3.txz
