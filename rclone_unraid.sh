@@ -42,14 +42,14 @@ fi
 	makewhatis
 
 # copy config file to default location
-cp /boot/rclone/install/.rclone.conf /root/
+	cp /boot/rclone/install/.rclone.conf /root/
 
 # set ssl certs
-mkdir -p /etc/ssl/certs/
-curl -o /etc/ssl/certs/ca-certificates.crt https://raw.githubusercontent.com/bagder/ca-bundle/master/ca-bundle.crt
+	mkdir -p /etc/ssl/certs/
+	curl -o /etc/ssl/certs/ca-certificates.crt https://raw.githubusercontent.com/bagder/ca-bundle/master/ca-bundle.crt
 
 #make any scripts executable
-chmod u+x /boot/rclone/scripts/rclone_unraid.sh
+	chmod u+x /boot/rclone/scripts/rclone_unraid.sh
 
 # set cron job, this will run at 1min past midnight everynight
-crontab -l | { cat; echo "1 0 * * * /boot/rclone/scripts/rclone_unraid.sh > /dev/null 2>&1"; } | crontab -
+	crontab -l | { cat; echo "1 0 * * * /boot/rclone/scripts/rclone_unraid.sh > /dev/null 2>&1"; } | crontab -
