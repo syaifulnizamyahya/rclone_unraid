@@ -49,7 +49,7 @@ mkdir -p /etc/ssl/certs/
 curl -o /etc/ssl/certs/ca-certificates.crt https://raw.githubusercontent.com/bagder/ca-bundle/master/ca-bundle.crt
 
 #make any scripts executable
-chmod u+x /boot/rclone/scripts/rcloneCopy.sh
+chmod u+x /boot/rclone/scripts/rclone_unraid.sh
 
 # set cron job, this will run at 1min past midnight everynight
-crontab -l | { cat; echo "1 0 * * * /boot/rclone/scripts/rcloneCopy.sh > /dev/null 2>&1"; } | crontab -
+crontab -l | { cat; echo "1 0 * * * /boot/rclone/scripts/rclone_unraid.sh > /dev/null 2>&1"; } | crontab -
